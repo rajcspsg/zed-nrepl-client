@@ -1,6 +1,6 @@
 # GPUI NRepl Client App
 
-<img src="screengrab.png" alt="drawing" style="width:250px;"/>
+
 
 ### Basic NRepl Client UI app written in gpui.rs
 
