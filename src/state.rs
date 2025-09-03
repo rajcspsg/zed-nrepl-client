@@ -16,18 +16,19 @@ pub struct StateModel {
 }
 
 impl StateModel {
-    pub fn init(app: &mut App) {
+    pub fn init(app: &mut App, port: u16) {
         let model = app.new(|_cx| State {
             count: 0,
             items: vec![],
         });
 
-        let mut client = app.new(|_cx| match NreplClient::connect("127.0.0.1", 64979) {
+        let mut client = app.new(|_cx| match NreplClient::connect("127.0.0.1", port) {
             Ok(c) => c,
             Err(e) => {
                 println!("Failed to connect: {}", e);
                 panic!(
-                    "Make sure nREPL server is running with: lein repl :headless :host 127.0.0.1 :port 63067"
+                    "Make sure nREPL server is running with: lein repl :headless :host 127.0.0.1 :port {}",
+                    port
                 );
             }
         });

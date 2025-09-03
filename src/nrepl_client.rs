@@ -1,7 +1,6 @@
 use std::collections::HashMap;
 use std::io::{ErrorKind, Read, Write};
 use std::net::TcpStream;
-use std::path::Display;
 use std::time::{Duration, Instant};
 
 #[derive(Debug)]

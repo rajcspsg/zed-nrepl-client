@@ -12,6 +12,7 @@ use gpui::*;
 use input::*;
 use repl::*;
 use state::*;
+use std::env;
 use theme::*;
 use window::*;
 
@@ -42,9 +43,15 @@ fn main() {
         }]);
 
         let options = get_window_options(cx);
-        cx.open_window(options, |win, app| {
+        let args: Vec<String> = env::args().collect();
+        let port: u16 = args[1]
+            .clone()
+            .to_string()
+            .parse()
+            .expect("Failed to parse port to u16");
+        cx.open_window(options, move |win, app| {
             blur_window(win);
-            StateModel::init(app);
+            StateModel::init(app, port);
             //Nrepl::init(app);
             Theme::init(app);
             NreplClientApp::new(app)

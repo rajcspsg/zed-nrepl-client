@@ -45,9 +45,8 @@ impl RenderOnce for NreplRequest {
                     .pt_2()
                     .pr_1()
                     .items_center()
-                    .justify_center()
-                    .child(Icon::new(IconName::Trash))
-                    .on_mouse_down(MouseButton::Left, move |_, _, app| self.clone().delete(app)),
+                    .justify_center(), //.child(Icon::new(IconName::Trash))
+                                       //.on_mouse_down(MouseButton::Left, move |_, _, app| self.clone().delete(app)),
             )
     }
 }
@@ -245,7 +244,7 @@ impl Render for NreplClientApp {
                     .child(self.input_view.clone()),
             );
 
-        let todos_app = div()
+        let repl_app = div()
             .flex()
             .flex_grow()
             .flex_col()
@@ -270,7 +269,7 @@ impl Render for NreplClientApp {
                     .justify_between()
                     .text_color(theme.text)
                     .child(header)
-                    .child(todos_app),
+                    .child(repl_app),
             )
     }
 }
